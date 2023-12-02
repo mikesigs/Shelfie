@@ -1,15 +1,14 @@
-﻿using System.Net;
-using Shelfie.Infrastructure.BGG;
+﻿using Shelfie.Infrastructure.BoardGameGeek;
 using Shouldly;
 using Xunit;
 
-namespace Shelfie.IntegrationTests;
+namespace Shelfie.IntegrationTests.BoardGameGeek;
 
-public class BggApiEndToEndTests
+public class BggApiClient_EndToEndTests
 {
     private readonly BggApiClient _bggApiClient;
 
-    public BggApiEndToEndTests()
+    public BggApiClient_EndToEndTests()
     {
         _bggApiClient = new BggApiClient(new HttpClient
         {
@@ -21,10 +20,6 @@ public class BggApiEndToEndTests
     public async Task Test_Search_ShouldReturnExpectedResult()
     {
         // Arrange
-        var expectedResponse = new HttpResponseMessage(HttpStatusCode.OK)
-        {
-            Content = new StringContent("<game><name>Test Game</name></game>"),
-        };
 
         // Act
         var result = await _bggApiClient.Search("chess");

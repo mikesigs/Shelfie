@@ -4,14 +4,14 @@ using Shelfie.Infrastructure.Data;
 using Shouldly;
 using Xunit;
 
-namespace Shelfie.IntegrationTests;
+namespace Shelfie.IntegrationTests.Data;
 
-public class ShelfieRepositoryIntegrationTests
+public class ShelfieRepository_IntegrationTests
 {
     private readonly ShelfieDbContext _context;
     private readonly ShelfieRepository _sut;
 
-    public ShelfieRepositoryIntegrationTests()
+    public ShelfieRepository_IntegrationTests()
     {
         var options = new DbContextOptionsBuilder<ShelfieDbContext>()
             .UseInMemoryDatabase(databaseName: "Test_Database") // Using In-Memory database for testing

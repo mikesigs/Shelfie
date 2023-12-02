@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shelfie.Core.BGG;
-using Shelfie.Infrastructure.BGG;
+using Shelfie.Core.BoardGameGeek;
+using Shelfie.Infrastructure.BoardGameGeek;
 using Shelfie.Infrastructure.Data;
 
 namespace Shelfie

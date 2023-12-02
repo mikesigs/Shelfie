@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
-using Shelfie.Core.BGG;
+using Shelfie.Core.BoardGameGeek;
 
-namespace Shelfie.Infrastructure.BGG;
+namespace Shelfie.Infrastructure.BoardGameGeek;
 
 public class BggApiClient : IBggApiClient
 {
@@ -12,21 +12,21 @@ public class BggApiClient : IBggApiClient
         _httpClient = httpClient;
     }
 
-    public async Task<BggSearchResults> Search(string searchText)
+    public async Task<BggSearchResult> Search(string searchTerm)
     {
-        var response = await _httpClient.GetAsync($"search?search={searchText}");
+        var response = await _httpClient.GetAsync($"search?search={searchTerm}");
         response.EnsureSuccessStatusCode();
 
         return await DeserializeXmlResponse(response);
     }
 
-    private static async Task<BggSearchResults> DeserializeXmlResponse(HttpResponseMessage response)
+    private static async Task<BggSearchResult> DeserializeXmlResponse(HttpResponseMessage response)
     {
         var content = await response.Content.ReadAsStringAsync();
-        var serializer = new XmlSerializer(typeof(BggSearchResults));
+        var serializer = new XmlSerializer(typeof(BggSearchResult));
 
         using var reader = new StringReader(content);
-        var result = (BggSearchResults)serializer.Deserialize(reader)!;
+        var result = (BggSearchResult)serializer.Deserialize(reader)!;
         return result;
     }
 }
