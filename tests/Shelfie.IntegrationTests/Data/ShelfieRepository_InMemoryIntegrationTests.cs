@@ -6,22 +6,22 @@ using Xunit;
 
 namespace Shelfie.IntegrationTests.Data;
 
-public class ShelfieRepository_IntegrationTests
+public class ShelfieRepository_InMemoryIntegrationTests
 {
     private readonly ShelfieDbContext _context;
     private readonly ShelfieRepository _sut;
 
-    public ShelfieRepository_IntegrationTests()
+    public ShelfieRepository_InMemoryIntegrationTests()
     {
         var options = new DbContextOptionsBuilder<ShelfieDbContext>()
-            .UseSqlServer("Server=localhost;Database=Shelfie;Trusted_Connection=True;TrustServerCertificate=True;") // Using In-Memory database for testing
+            .UseInMemoryDatabase(databaseName: "Test_Database") // Using In-Memory database for testing
             .Options;
 
         _context = new ShelfieDbContext(options);
         _sut = new ShelfieRepository(_context);
     }
 
-    [Fact, AutoRollback]
+    [Fact]
     public async Task WhenGameExists_DoesBoardGameExist_ShouldReturnTrue()
     {
         // Arrange
@@ -41,7 +41,7 @@ public class ShelfieRepository_IntegrationTests
         result.ShouldBeTrue();
     }
 
-    [Fact, AutoRollback]
+    [Fact]
     public async Task WhenGameDoesNotExist_DoesBoardGameExist_ShouldReturnFalse()
     {
         // Arrange
@@ -53,7 +53,7 @@ public class ShelfieRepository_IntegrationTests
         result.ShouldBeFalse();
     }
 
-    [Fact, AutoRollback]
+    [Fact]
     public async Task WhenGameExists_GetBoardGame_ShouldReturnBoardGame()
     {
         // Arrange
