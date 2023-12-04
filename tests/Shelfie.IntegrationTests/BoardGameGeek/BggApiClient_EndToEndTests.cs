@@ -4,6 +4,7 @@ using Xunit;
 
 namespace Shelfie.IntegrationTests.BoardGameGeek;
 
+[Trait("Category", "EndToEnd")]
 public class BggApiClient_EndToEndTests
 {
     private readonly BggApiClient _bggApiClient;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shelfie.Core.Data;
 using Shelfie.Infrastructure.Data;
+using Shelfie.IntegrationTests.Helpers;
 using Shouldly;
 using Xunit;
 

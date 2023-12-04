@@ -2,11 +2,13 @@
 using RichardSzalay.MockHttp;
 using Shelfie.Core.BoardGameGeek;
 using Shelfie.Infrastructure.BoardGameGeek;
+using Shelfie.IntegrationTests.Helpers;
 using Shouldly;
 using Xunit;
 
 namespace Shelfie.IntegrationTests.BoardGameGeek;
 
+[Trait("Category", TestCategory.IntegrationTest)]
 public class BggApiClient_IntegrationTests
 {
     private const string BaseAddress = "http://www.example.com";

@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shelfie.Core.Data;
 using Shelfie.Infrastructure.Data;
+using Shelfie.IntegrationTests.Helpers;
 using Shouldly;
 using Xunit;
 
 namespace Shelfie.IntegrationTests.Data;
 
+[Trait("Category", TestCategory.IntegrationTest)]
 public class ShelfieRepository_InMemoryIntegrationTests
 {
     private readonly ShelfieDbContext _context;

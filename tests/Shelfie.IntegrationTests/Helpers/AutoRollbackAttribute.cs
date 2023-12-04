@@ -2,7 +2,7 @@
 using System.Transactions;
 using Xunit.Sdk;
 
-namespace Shelfie.IntegrationTests.Data
+namespace Shelfie.IntegrationTests.Helpers
 {
     /// <summary>
     /// Apply this attribute to your test method to automatically create a <see cref="TransactionScope"/>
