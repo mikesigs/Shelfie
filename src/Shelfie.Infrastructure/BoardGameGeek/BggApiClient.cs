@@ -12,7 +12,7 @@ public class BggApiClient : IBggApiClient
         _httpClient = httpClient;
     }
 
-    public async Task<BggSearchResult> Search(string searchTerm)
+    public async Task<BggApiResult> Search(string searchTerm)
     {
         var response = await _httpClient.GetAsync($"search?search={searchTerm}");
         response.EnsureSuccessStatusCode();
@@ -20,13 +20,21 @@ public class BggApiClient : IBggApiClient
         return await DeserializeXmlResponse(response);
     }
 
-    private static async Task<BggSearchResult> DeserializeXmlResponse(HttpResponseMessage response)
+    public async Task<BggApiResult> GetBoardGame(int bggObjectId)
+    {
+        var response = await _httpClient.GetAsync($"boardgame/{bggObjectId}");
+        response.EnsureSuccessStatusCode();
+
+        return await DeserializeXmlResponse(response);
+    }
+
+    private static async Task<BggApiResult> DeserializeXmlResponse(HttpResponseMessage response)
     {
         var content = await response.Content.ReadAsStringAsync();
-        var serializer = new XmlSerializer(typeof(BggSearchResult));
+        var serializer = new XmlSerializer(typeof(BggApiResult));
 
         using var reader = new StringReader(content);
-        var result = (BggSearchResult)serializer.Deserialize(reader)!;
+        var result = (BggApiResult)serializer.Deserialize(reader)!;
         return result;
     }
 }

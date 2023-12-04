@@ -3,7 +3,7 @@
 namespace Shelfie.Core.BoardGameGeek
 {
     [XmlRoot("boardgames")]
-    public record BggSearchResult
+    public record BggApiResult
     {
         [XmlElement("boardgame")]
         public BggBoardGame[]? BoardGames { get; init; }

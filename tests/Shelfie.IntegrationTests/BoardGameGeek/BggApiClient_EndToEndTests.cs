@@ -1,9 +1,9 @@
 ﻿using Shelfie.Infrastructure.BoardGameGeek;
-using Shelfie.IntegrationTests.Helpers;
+using Shelfie.Tests.Helpers;
 using Shouldly;
 using Xunit;
 
-namespace Shelfie.IntegrationTests.BoardGameGeek;
+namespace Shelfie.Tests.BoardGameGeek;
 
 [Trait("Category", TestCategory.EndToEndTest)]
 public class BggApiClient_EndToEndTests
@@ -24,9 +24,15 @@ public class BggApiClient_EndToEndTests
         // Arrange
 
         // Act
-        var result = await _bggApiClient.Search("chess");
+        var result = await _bggApiClient.Search("Anachrony");
 
         // Assert
-        result.BoardGames.ShouldNotBeEmpty();
+        var game = result.BoardGames?.FirstOrDefault();
+
+        game.ShouldSatisfyAllConditions(
+            () => game.ShouldNotBeNull(),
+            () => game!.Name.ShouldNotBeEmpty(),
+            () => game!.ObjectId.ShouldBeGreaterThan(default),
+            () => game!.YearPublished.ShouldBeGreaterThan(default));
     }
 }

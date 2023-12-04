@@ -1,4 +1,4 @@
-﻿namespace Shelfie.IntegrationTests.Helpers
+﻿namespace Shelfie.Tests.Helpers
 {
     public static class TestCategory
     {

@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shelfie.Core.BoardGameGeek;
+using Shelfie.Core.Data;
+using Shelfie.Core.Services;
 using Shelfie.Infrastructure.BoardGameGeek;
 using Shelfie.Infrastructure.Data;
 
@@ -17,6 +19,10 @@ namespace Shelfie
                 .ConfigureDefaults(args)
                 .ConfigureServices(services =>
                 {
+                    services.AddTransient<IShelfieRepository, ShelfieRepository>();
+                    services.AddTransient<ShelfieService>();
+                    services.AddHostedService<Worker>();
+
                     services.AddDbContext<ShelfieDbContext>(options =>
                         options.UseSqlServer("Server=localhost;Database=Shelfie;Trusted_Connection=True;TrustServerCertificate=True;"));
 

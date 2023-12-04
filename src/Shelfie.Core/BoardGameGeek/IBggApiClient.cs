@@ -2,6 +2,7 @@
 {
     public interface IBggApiClient
     {
-        Task<BggSearchResult> Search(string searchTerm);
+        Task<BggApiResult> Search(string searchTerm);
+        Task<BggApiResult> GetBoardGame(int bggObjectId);
     }
 }

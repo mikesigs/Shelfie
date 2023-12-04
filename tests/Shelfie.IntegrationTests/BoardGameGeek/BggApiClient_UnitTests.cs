@@ -2,21 +2,21 @@
 using RichardSzalay.MockHttp;
 using Shelfie.Core.BoardGameGeek;
 using Shelfie.Infrastructure.BoardGameGeek;
-using Shelfie.IntegrationTests.Helpers;
+using Shelfie.Tests.Helpers;
 using Shouldly;
 using Xunit;
 
-namespace Shelfie.IntegrationTests.BoardGameGeek;
+namespace Shelfie.Tests.BoardGameGeek;
 
 [Trait("Category", TestCategory.IntegrationTest)]
-public class BggApiClient_IntegrationTests
+public class BggApiClient_UnitTests
 {
     private const string BaseAddress = "http://www.example.com";
 
     private readonly BggApiClient _bggApiClient;
     private readonly MockHttpMessageHandler _mockHttpMessageHandler = new();
 
-    public BggApiClient_IntegrationTests()
+    public BggApiClient_UnitTests()
     {
         _bggApiClient = new BggApiClient(new HttpClient(_mockHttpMessageHandler)
         {
@@ -32,18 +32,18 @@ public class BggApiClient_IntegrationTests
 
         var expected = new BggBoardGame
         {
-            Id = 20605,
+            ObjectId = 20605,
             Name = "100 Other Games to Play on a Chessboard",
             YearPublished = 1983
         };
 
         var expectedContent = @$"
-                <boardgames>
-		            <boardgame objectid=""{expected.Id}"">
-			            <name primary=""true"">{expected.Name}</name>			
-		                <yearpublished>{expected.YearPublished}</yearpublished>
-		            </boardgame>
-	            </boardgames>";
+            <boardgames>
+		        <boardgame objectid=""{expected.ObjectId}"">
+			        <name primary=""true"">{expected.Name}</name>			
+		            <yearpublished>{expected.YearPublished}</yearpublished>
+		        </boardgame>
+	        </boardgames>";
 
         _mockHttpMessageHandler
             .Expect(HttpMethod.Get, $"{BaseAddress}/search?search={searchTerm}")

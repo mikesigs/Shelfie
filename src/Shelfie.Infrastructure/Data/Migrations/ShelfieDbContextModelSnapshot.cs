@@ -30,10 +30,14 @@ namespace Shelfie.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("BggObjectId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("YearPublished")
+                    b.Property<int>("YearPublished")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

@@ -3,7 +3,8 @@
     public class BoardGame
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
-        public int? YearPublished { get; set; }
+        public string Name { get; init; } = null!;
+        public int YearPublished { get; init; }
+        public int? BggObjectId { get; set; }
     }
 }

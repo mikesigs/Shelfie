@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelfie", "src\Shelfie\Shelfie.csproj", "{14D18C36-129F-41C9-9575-D26FD96335CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelfie.IntegrationTests", "tests\Shelfie.IntegrationTests\Shelfie.IntegrationTests.csproj", "{1455C653-36F8-4140-BEC5-EC40387F6054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelfie.Tests", "tests\Shelfie.IntegrationTests\Shelfie.Tests.csproj", "{1455C653-36F8-4140-BEC5-EC40387F6054}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelfie.Core", "src\Shelfie.Core\Shelfie.Core.csproj", "{8EE63108-5E89-4AD7-8C84-C1354CAC2686}"
 EndProject
@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8F230A7D-99CA-4518-A5F1-428A05BCDD02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{072F3087-F679-4F1A-986D-817445A0B22A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14D18C36-129F-41C9-9575-D26FD96335CC} = {8F230A7D-99CA-4518-A5F1-428A05BCDD02}
+		{1455C653-36F8-4140-BEC5-EC40387F6054} = {072F3087-F679-4F1A-986D-817445A0B22A}
+		{8EE63108-5E89-4AD7-8C84-C1354CAC2686} = {8F230A7D-99CA-4518-A5F1-428A05BCDD02}
+		{98364B42-B567-47DC-B660-5D648AE4EB71} = {8F230A7D-99CA-4518-A5F1-428A05BCDD02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDEA899D-9BF9-4756-ACB0-49AF5D242065}

@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shelfie.Core.Data;
 using Shelfie.Infrastructure.Data;
-using Shelfie.IntegrationTests.Helpers;
+using Shelfie.Tests.Helpers;
 using Shouldly;
 using Xunit;
 
-namespace Shelfie.IntegrationTests.Data;
+namespace Shelfie.Tests.Data;
 
 [Trait("Category", TestCategory.IntegrationTest)]
 public class ShelfieRepository_IntegrationTests
@@ -69,7 +69,7 @@ public class ShelfieRepository_IntegrationTests
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _sut.GetBoardGame(entity.Name);
+        var result = await _sut.GetBoardGameByName(entity.Name);
 
         // Assert
         result.ShouldSatisfyAllConditions(
