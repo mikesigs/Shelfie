@@ -7,6 +7,7 @@ using Xunit;
 
 namespace Shelfie.IntegrationTests.Data;
 
+[Trait("Category", TestCategory.IntegrationTest)]
 public class ShelfieRepository_IntegrationTests
 {
     private readonly ShelfieDbContext _context;
